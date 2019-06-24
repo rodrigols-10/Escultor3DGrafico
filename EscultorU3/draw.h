@@ -4,12 +4,20 @@
 #include <QWidget>
 #include <QColor>
 
+struct DrawVoxel {
+  float r,g,b; // Colors
+  float a;
+// Transparency
+  bool isOn; // Included or not
+};
+
 class Draw : public QWidget
 {
     Q_OBJECT
 private:
     int linhas;
     int colunas;
+    DrawVoxel **v;
     int r,g,b,a;
     QColor Preenchimento;
     int PosX;

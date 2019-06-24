@@ -23,6 +23,21 @@ Draw::Draw(QWidget *parent) : QWidget(parent)
     a = 1;
     PosX=-1;
     PosY=-1;
+
+    v = new DrawVoxel*[10];
+    for(int i=0; i<10; i++){
+        v[i] = new DrawVoxel[10];
+    }
+
+    for(int i = 0; i<10; i++){
+        for(int j = 0; j<10; j++){
+            v[i][j].r = 255;
+            v[i][j].g = 255;
+            v[i][j].b = 255;
+            v[i][j].a = 1;
+            v[i][j].isOn = false;
+     }
+    }
 }
 
 void Draw::paintEvent(QPaintEvent *event)
@@ -68,8 +83,15 @@ void Draw::paintEvent(QPaintEvent *event)
   p.setBrush(brush);
   for(int i=0; i<linhas; i++){
       for(int j=0; j<colunas; j++){
-        p.drawRect(px,py,txy,txy);
-        py = py + txy;
+          if(v[i][j].isOn){
+              brush.setColor(QColor(v[i][j].r,v[i][j].g,v[i][j].g));
+              p.drawRect(px,py,txy,txy);
+              py = py + txy;
+          } else{
+              brush.setColor(QColor(255,255,255));
+              p.drawRect(px,py,txy,txy);
+              py = py + txy;
+          }
       }
       px = px + txy;
       py = 0;
