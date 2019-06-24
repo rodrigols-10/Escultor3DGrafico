@@ -24,20 +24,19 @@ Draw::Draw(QWidget *parent) : QWidget(parent)
     PosX=-1;
     PosY=-1;
 
-    v = new DrawVoxel*[10];
-    for(int i=0; i<10; i++){
-        v[i] = new DrawVoxel[10];
-    }
-
+    vector<Voxel> l;
+    l.resize(10);
     for(int i = 0; i<10; i++){
         for(int j = 0; j<10; j++){
-            v[i][j].r = 255;
-            v[i][j].g = 255;
-            v[i][j].b = 255;
-            v[i][j].a = 1;
-            v[i][j].isOn = false;
-     }
+            l[j].isOn = false;
+            l[j].r = 1.0;
+            l[j].g = 1.0;
+            l[j].b = 1.0;
+            l[j].a = 1.0;
+        }
+        v.push_back(l);
     }
+    l.clear();
 }
 
 void Draw::paintEvent(QPaintEvent *event)
@@ -84,7 +83,10 @@ void Draw::paintEvent(QPaintEvent *event)
   for(int i=0; i<linhas; i++){
       for(int j=0; j<colunas; j++){
           if(v[i][j].isOn){
-              brush.setColor(QColor(v[i][j].r,v[i][j].g,v[i][j].g));
+              r = (int) 255*v[i][j].r;
+              g = (int) 255*v[i][j].g;
+              b = (int) 255*v[i][j].b;
+              brush.setColor(QColor(r,g,b));
               p.drawRect(px,py,txy,txy);
               py = py + txy;
           } else{
@@ -114,4 +116,12 @@ void Draw::mousePressEvent(QMouseEvent *event){
 
     repaint();
   }
+}
+
+void Draw::mudarGrade(std::vector<std::vector<Voxel>> m)
+{
+    linhas = m.size();
+    colunas = m[0].size();
+    v = m;
+    repaint();
 }

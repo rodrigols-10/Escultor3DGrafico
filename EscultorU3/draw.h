@@ -3,13 +3,7 @@
 
 #include <QWidget>
 #include <QColor>
-
-struct DrawVoxel {
-  float r,g,b; // Colors
-  float a;
-// Transparency
-  bool isOn; // Included or not
-};
+#include "sculptor.h"
 
 class Draw : public QWidget
 {
@@ -17,7 +11,7 @@ class Draw : public QWidget
 private:
     int linhas;
     int colunas;
-    DrawVoxel **v;
+    std::vector<std::vector<Voxel>> v;
     int r,g,b,a;
     QColor Preenchimento;
     int PosX;
@@ -32,6 +26,7 @@ signals:
   void clickY(int);
 
 public slots:
+  void mudarGrade(std::vector<std::vector<Voxel>> m);
 };
 
 #endif // DRAW_H

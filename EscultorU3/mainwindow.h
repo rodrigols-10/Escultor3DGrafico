@@ -13,10 +13,16 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    int dim = 0;
+    int pln = XY;
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void tamanhograde(std::vector<std::vector<Voxel>> mm);
 public slots:
     /* Tava dando erro, já que não tinha nada além disso
     void changeXY();
@@ -32,6 +38,9 @@ public slots:
     void cutEllipsoide();
     void selectPlane();
 */
+
+private slots:
+    void on_botaoIr_clicked();
 
 private:
     Ui::MainWindow *ui;

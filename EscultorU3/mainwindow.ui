@@ -378,6 +378,9 @@ border: 1px solid #444;
 border-radius: 4px;
 }</string>
     </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -405,6 +408,9 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
 border: 1px solid #444;
 border-radius: 4px;
 }</string>
+    </property>
+    <property name="maximum">
+     <number>255</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -434,6 +440,9 @@ border: 1px solid #444;
 border-radius: 4px;
 }</string>
     </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -461,6 +470,9 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
 border: 1px solid #444;
 border-radius: 4px;
 }</string>
+    </property>
+    <property name="maximum">
+     <number>100</number>
     </property>
     <property name="value">
      <number>99</number>
@@ -509,7 +521,7 @@ border-radius: 4px;
      </rect>
     </property>
     <property name="intValue" stdset="0">
-     <number>99</number>
+     <number>100</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -925,6 +937,9 @@ border-radius: 4px;
          <property name="whatsThis">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
          <property name="maximum">
           <number>100</number>
          </property>
@@ -934,7 +949,7 @@ border-radius: 4px;
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="botaoIr">
          <property name="text">
           <string>Ir</string>
          </property>
@@ -1030,6 +1045,24 @@ border-radius: 4px;
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>57</x>
+      <y>495</y>
+      <width>20</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>XY</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
