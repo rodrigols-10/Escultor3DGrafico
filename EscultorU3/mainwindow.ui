@@ -336,7 +336,7 @@ background-repeat: none;
      <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="Color" native="true">
+   <widget class="ColorDraw" name="Color" native="true">
     <property name="geometry">
      <rect>
       <x>700</x>
@@ -347,7 +347,7 @@ background-repeat: none;
     </property>
     <property name="styleSheet">
      <string notr="true">#Color{
-background-color: rgb(85, 255, 255);
+background-color: rgb(0, 155, 255);
 }</string>
     </property>
    </widget>
@@ -412,6 +412,9 @@ border-radius: 4px;
     <property name="maximum">
      <number>255</number>
     </property>
+    <property name="value">
+     <number>155</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -441,6 +444,9 @@ border-radius: 4px;
 }</string>
     </property>
     <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
      <number>255</number>
     </property>
     <property name="orientation">
@@ -500,6 +506,9 @@ border-radius: 4px;
       <height>21</height>
      </rect>
     </property>
+    <property name="intValue" stdset="0">
+     <number>155</number>
+    </property>
    </widget>
    <widget class="QLCDNumber" name="lcdBlue">
     <property name="geometry">
@@ -509,6 +518,9 @@ border-radius: 4px;
       <width>41</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="intValue" stdset="0">
+     <number>255</number>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdTransparencia">
@@ -546,6 +558,12 @@ border-radius: 4px;
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -582,6 +600,12 @@ border-radius: 4px;
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
@@ -604,6 +628,12 @@ border-radius: 4px;
       <width>42</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>1</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -628,6 +658,9 @@ border-radius: 4px;
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_5">
     <property name="geometry">
@@ -638,6 +671,9 @@ border-radius: 4px;
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_6">
     <property name="geometry">
@@ -647,6 +683,9 @@ border-radius: 4px;
       <width>42</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
@@ -696,6 +735,9 @@ border-radius: 4px;
       <width>42</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -1107,7 +1149,13 @@ border-radius: 4px;
   <customwidget>
    <class>Draw</class>
    <extends>QWidget</extends>
-   <header location="global">draw.h</header>
+   <header>draw.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ColorDraw</class>
+   <extends>QWidget</extends>
+   <header location="global">colordraw.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

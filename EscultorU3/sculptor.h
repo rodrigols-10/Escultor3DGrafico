@@ -42,6 +42,8 @@ public:
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void writeOFF(std::string filename);
   void writeVECT(std::string filename);
+
+  void redimensionarMatriz(int tam);
   vector<vector<Voxel>> readPln(int dim = 0, int pln = XY);
 };
 

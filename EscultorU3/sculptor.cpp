@@ -26,10 +26,10 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
     for(int i = 0; i<nx; i++){
         for(int j = 0; j<ny; j++){
             for(int k = 0; k<nz; k++){
-                v[i][j][k].r = 255;
-                v[i][j][k].g = 255;
-                v[i][j][k].b = 255;
-                v[i][j][k].a = 1;
+                v[i][j][k].r = 1.0;
+                v[i][j][k].g = 1.0;
+                v[i][j][k].b = 1.0;
+                v[i][j][k].a = 1.0;
                 v[i][j][k].isOn = false;
             }
         }
@@ -293,4 +293,38 @@ void Sculptor::writeOFF(std::string filename)
 void Sculptor::writeVECT(std::string filename)
 {
     std::cout << "O arquivo " << filename << " nao pode ser gravado em VECT ainda";
+}
+
+void Sculptor::redimensionarMatriz(int tam)
+{
+    for(int i=0; i<nx; i++){
+        for(int j=0; j<ny; j++){
+            delete [] v[i][j];
+        }
+            delete [] v[i];
+    }
+            delete [] v;
+    //Criando nova matriz pra Voxel *v
+    nx = tam;
+    ny = tam;
+    nz = tam;
+    v = new Voxel**[nx];
+    for(int i=0; i<nx; i++){
+        v[i] = new Voxel*[ny];
+        for(int j=0; j<ny; j++){
+           v[i][j] = new Voxel[nz];
+        }
+    }
+
+    for(int i = 0; i<nx; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nz; k++){
+                v[i][j][k].r = 1.0;
+                v[i][j][k].g = 1.0;
+                v[i][j][k].b = 1.0;
+                v[i][j][k].a = 1.0;
+                v[i][j][k].isOn = false;
+            }
+        }
+    }
 }

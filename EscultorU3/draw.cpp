@@ -108,11 +108,16 @@ void Draw::paintEvent(QPaintEvent *event)
 }
 
 void Draw::mousePressEvent(QMouseEvent *event){
+    int Pos[2] = {0,0};
   if(event->button() == Qt::LeftButton ){
     PosX = (int) event->x()/(width()/linhas);
     PosY = (int) event->y()/(height()/colunas);
+    Pos[0] = PosX;
+    Pos[1] = PosY;
+
     emit clickX(PosX);
     emit clickY(PosY);
+    emit posicaoGrade(Pos);
 
     repaint();
   }

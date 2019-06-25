@@ -24,6 +24,7 @@ public:
 signals:
   void clickX(int);
   void clickY(int);
+  void posicaoGrade(int[]);
 
 public slots:
   void mudarGrade(std::vector<std::vector<Voxel>> m);
