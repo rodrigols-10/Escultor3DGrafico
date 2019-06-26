@@ -8,7 +8,7 @@ class ColorDraw : public QWidget
     Q_OBJECT
 
 private:
-    int r,g,b;
+    int r,g,b; //Color
 public:
     explicit ColorDraw(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);

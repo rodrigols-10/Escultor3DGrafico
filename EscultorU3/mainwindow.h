@@ -19,15 +19,15 @@ private:
     int dimZ = 0;
     int pln = XY;
     int Objeto = 0;
-    float r,g,b,a; //cores capturadas dos QSliders
+    float r,g,b,a;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 signals:
-    void tamanhograde(std::vector<std::vector<Voxel>> mm);
-    void atualizagrade(std::vector<std::vector<Voxel>> mm);
+    void tamanhograde(std::vector<std::vector<Voxel>> m);
+    void atualizagrade(std::vector<std::vector<Voxel>> m);
 
 private slots:
     void on_botaoIr_clicked();

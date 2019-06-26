@@ -109,6 +109,7 @@ void Draw::mousePressEvent(QMouseEvent *event){
     Pos.push_back(PosX);
     Pos.push_back(PosY);
 
+    //emitindo posição
     emit clickX(PosX);
     emit clickY(PosY);
     emit posicaoGrade(Pos);

@@ -16,17 +16,15 @@ void ColorDraw::paintEvent(QPaintEvent *event)
     QPen pen;
     QBrush brush;
 
-    // preparando a caneta
-    // R, G, B
     pen.setColor(QColor(0,0,0));
     pen.setWidth(2);
-    // entregando a caneta ao pintor
+
     p.setPen(pen);
 
-    // preparando o pincel
+
     brush.setColor(QColor(r,g,b));
     brush.setStyle(Qt::SolidPattern);
-    // entregando o pincel ao pintor
+
     p.setBrush(brush);
 
     p.drawRect(0,0,width(),height());

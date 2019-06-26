@@ -8,10 +8,10 @@
 using namespace std;
 
 struct Voxel {
-  float r,g,b; // Colors
+  float r,g,b;
   float a;
-// Transparency
-  bool isOn; // Included or not
+
+  bool isOn;
 };
 
 enum {

@@ -295,20 +295,17 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
@@ -317,20 +314,17 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
@@ -339,20 +333,17 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
@@ -361,20 +352,17 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
@@ -383,20 +371,17 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
@@ -405,31 +390,23 @@ void MainWindow::criarObjeto(std::vector<int> p)
                 case XY:
                     //cria objeto
 
-                    m = obj->readPln(dimZ,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case YZ:
                     //cria objeto
 
-                    m = obj->readPln(dimX,pln);
-                    emit atualizagrade(m);
+
                 break;
                 case ZX:
                     //cria objeto
 
-                    m = obj->readPln(dimY,pln);
-                    emit atualizagrade(m);
+
                 break;
             }
         break;
     }
 
-    //setColor(r,g,b,a); atribui os valores dos sliders das cores às variaveis r, g, b e a --- r = ui->Red->value()/255;
 
-    //figura geometrica terá um objeto criando objetos de escultor
-    //vários switchs
-
-    //emit atualizagrade(m);
 }
 
 void MainWindow::MudalayerX(int valor)

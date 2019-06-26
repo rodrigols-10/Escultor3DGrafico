@@ -19,7 +19,6 @@ private:
 public:
     explicit Draw(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
-    //void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
 signals:
   void clickX(int);
