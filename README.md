@@ -25,7 +25,7 @@ Para se familizar ainda mais com os recursos que o programa tem a oferecer, exis
 <img src="https://user-images.githubusercontent.com/48896758/60151342-cbc26b80-97b2-11e9-85e5-f1f25dbfdd1b.jpg" width="500px;" style="max-width:100%;">
  </p>
  
- Os controles para as cores e opacidade das figuras geométricas estão no painel do lado direito, sendo representada por essas barras deslizantes, tendo em vista uma variedade maior de cores e uma facilitação no seu uso
+ Os controles para as cores e opacidade das figuras geométricas estão no painel do lado direito, sendo representada por essas barras deslizantes, tendo em vista uma variedade maior de cores e uma facilitação no seu uso. Além disso, mais acima dessas bordas deslizantes, temos a configuração dos tamanhos e raios da figura, podendo ajustar da maneira mais coveniente 
  
 <p align="center"> 
 <img src="https://user-images.githubusercontent.com/48896758/60151646-e9440500-97b3-11e9-89c8-76e536b2b6ee.jpg" width="200px;" style="max-width:80%;">
