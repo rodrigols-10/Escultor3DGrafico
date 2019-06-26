@@ -549,7 +549,7 @@ border-radius: 4px;
      <string>Transp.:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
+   <widget class="QSpinBox" name="Box_tamY">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -591,7 +591,7 @@ border-radius: 4px;
      <string>Tam X:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_2">
+   <widget class="QSpinBox" name="Box_tamX">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -620,7 +620,7 @@ border-radius: 4px;
      <string>Tam Z:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_3">
+   <widget class="QSpinBox" name="Box_tamZ">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -649,7 +649,7 @@ border-radius: 4px;
      <string>Raio:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_4">
+   <widget class="QSpinBox" name="Esfera_Raio">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -662,7 +662,7 @@ border-radius: 4px;
      <number>1</number>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_5">
+   <widget class="QSpinBox" name="Elp_RaioZ">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -675,7 +675,7 @@ border-radius: 4px;
      <number>1</number>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_6">
+   <widget class="QSpinBox" name="Elp_RaioY">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -727,7 +727,7 @@ border-radius: 4px;
      <string>Raio Y:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_7">
+   <widget class="QSpinBox" name="Elp_RaioX">
     <property name="geometry">
      <rect>
       <x>770</x>

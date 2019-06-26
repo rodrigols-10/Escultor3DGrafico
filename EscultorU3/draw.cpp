@@ -98,22 +98,16 @@ void Draw::paintEvent(QPaintEvent *event)
       px = px + txy;
       py = 0;
   }
-  //Temporário
-  if(PosX!=-1){
-  brush.setColor(QColor(r,g,b));
-  p.setBrush(brush);
-  p.drawRect(PosX*txy,PosY*txy,txy,txy);
-  }
-  //----------
+
 }
 
 void Draw::mousePressEvent(QMouseEvent *event){
-    int Pos[2] = {0,0};
+    std::vector<int> Pos;
   if(event->button() == Qt::LeftButton ){
     PosX = (int) event->x()/(width()/linhas);
     PosY = (int) event->y()/(height()/colunas);
-    Pos[0] = PosX;
-    Pos[1] = PosY;
+    Pos.push_back(PosX);
+    Pos.push_back(PosY);
 
     emit clickX(PosX);
     emit clickY(PosY);
@@ -127,6 +121,12 @@ void Draw::mudarGrade(std::vector<std::vector<Voxel>> m)
 {
     linhas = m.size();
     colunas = m[0].size();
+    v = m;
+    repaint();
+}
+
+void Draw::gradeAtualizada(std::vector<std::vector<Voxel> > m)
+{
     v = m;
     repaint();
 }

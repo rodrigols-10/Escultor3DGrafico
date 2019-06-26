@@ -10,15 +10,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    float r,g,b,a; //cores capturadas dos QSliders
     //criando a matriz com valor padrão de 10
     obj = new Sculptor(10,10,10);
 
     //atribuindo o valor inicial às variaveis de cor
-    r = ui->Red->value();
-    g = ui->Green->value();
-    b = ui->Blue->value();
-    a = ui->Transparencia->value();
+    r = ui->Red->value()/255;
+    g = ui->Green->value()/255;
+    b = ui->Blue->value()/255;
+    a = ui->Transparencia->value()/255;
     //mandando pro Sculptor
     obj->setColor(r,g,b,a);
 
@@ -48,9 +47,9 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(display(int)));
 
     connect(ui->widget,
-            SIGNAL(posicaoGrade(int)), //erro: não há sinal. Suspeita do vetor que é retornado
+            SIGNAL(posicaoGrade(std::vector<int>)),
             this,
-            SLOT(criarObjeto(int)));
+            SLOT(criarObjeto(std::vector<int>)));
 
     connect(ui->botaoIr,
             SIGNAL(clicked()),
@@ -62,12 +61,12 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->widget,
             SLOT(mudarGrade(std::vector<std::vector<Voxel>>)));
 
-    connect(ui->up,
-            SIGNAL(clicked()),
-            this,
-            SLOT(on_up_clicked()));
+    connect(this,
+            SIGNAL(atualizagrade(std::vector<std::vector<Voxel>>)),
+            ui->widget,
+            SLOT(gradeAtualizada(std::vector<std::vector<Voxel>>)));
 
-    //muda a cor do azul na telinha
+    //muda a cor na telinha
     connect(ui->Red,
             SIGNAL(valueChanged(int)),
             ui->Color,
@@ -107,18 +106,18 @@ MainWindow::MainWindow(QWidget *parent) :
     //Mostrar o valor dos QSliders dos Layers nos Displayers
     connect(ui->LayerX,
             SIGNAL(valueChanged(int)),
-            ui->lcdX,
-            SLOT(display(int)));
+            this,
+            SLOT(MudalayerX(int))); //Fazer algo a respeito do valor máximo do QSlider
 
     connect(ui->LayerY,
             SIGNAL(valueChanged(int)),
-            ui->lcdY,
-            SLOT(display(int)));
+            this,
+            SLOT(MudalayerY(int))); //Fazer algo a respeito do valor máximo do QSlider
 
     connect(ui->LayerZ,
             SIGNAL(valueChanged(int)),
-            ui->lcdZ,
-            SLOT(display(int)));
+            this,
+            SLOT(MudalayerZ(int))); //Fazer algo a respeito do valor máximo do QSlider
 }
 
 MainWindow::~MainWindow()
@@ -160,34 +159,28 @@ void MainWindow::on_botaoIr_clicked()
 
 void MainWindow::on_up_clicked()
 {
-    QString s;
-    s = ui->label_19->text();
-
     //Procurar o novo plano escolhido e atribuir isso ao pln
     //Mudar a matriz m para o novo plano na dimensão do referido plano /dimX, dimY ou dimZ
-    if(s == "XY"){
-        pln = ZX;
-        s = "ZX";
-
-        m = obj->readPln(dimY,pln);
-    }else{
-        if(s == "YZ"){
+    switch(pln){
+        case XY:
             pln = ZX;
-            s = "ZX";
-
+            ui->label_19->setText("ZX");
             m = obj->readPln(dimY,pln);
-        }else{
-            if(s == "ZX"){
-                pln = XY;
-                s = "XY";
-                m = obj->readPln(dimZ,pln);
-            }
-        }
+        break;
+        case YZ:
+            pln = ZX;
+            ui->label_19->setText("ZX");
+            m = obj->readPln(dimY,pln);
+        break;
+        case ZX:
+            pln = XY;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimZ,pln);
+        break;
     }
-    //Mandar a nova matriz m para o Draw
 
-    //mudei o texto em s, agora mando pro label
-    ui->label_19->setText(s);
+    //Mandar a nova matriz m para o Draw
+    emit atualizagrade(m);
 }
 
 void MainWindow::on_putVoxelButton_clicked()
@@ -230,9 +223,322 @@ void MainWindow::on_cutEllipsoidButton_clicked()
     Objeto = 8;
 }
 
-void MainWindow::criarObjeto(int p[])
+void MainWindow::criarObjeto(std::vector<int> p)
 {
-    int pos[2];
-    pos[0] = p[0];
-    pos[1] = p[1];
+    std::vector<int> pos;
+    pos = p; //pos[0] é o X da grade e pos[1] é o Y da grade
+    int xg = pos[0];
+    int yg = pos[1]; //Vê se dá certo
+
+    r = (float)(ui->Red->value())/255;
+    g = (float)(ui->Green->value())/255;
+    b = (float)(ui->Blue->value())/255;
+    a = (float)(ui->Transparencia->value())/100;
+
+    switch (Objeto) {
+        case 1: //putVoxel
+            switch(pln){
+                case XY:
+                    //cria objeto
+                    obj->setColor(r,g,b,a);
+                    obj->putVoxel(xg,yg,dimZ);
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+                    obj->setColor(r,g,b,a);
+                    obj->putVoxel(dimX,yg,xg);
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+                    obj->setColor(r,g,b,a);
+                    obj->putVoxel(xg,dimY,yg);
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 2: //putBox
+            switch(pln){
+                case XY:
+                    //cria objeto
+                    obj->setColor(r,g,b,a);
+                    obj->putBox(xg, xg+ui->Box_tamX->value(), yg, yg+ui->Box_tamY->value(), dimZ, dimZ+ui->Box_tamZ->value());
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+                    obj->setColor(r,g,b,a);
+                    obj->putBox(dimX, dimX+ui->Box_tamX->value(),yg, yg+ui->Box_tamY->value(), xg, xg+ui->Box_tamZ->value());
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+                    obj->putBox(xg, xg+ui->Box_tamX->value(),dimY, dimY+ui->Box_tamY->value(), yg, yg+ui->Box_tamZ->value());
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 3: //putSphere
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 4://putEllipsoid
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 5: //cutVoxel
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 6: //cutBox
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 7: //cutSphere
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+        case 8: //cutEllipsoid
+            switch(pln){
+                case XY:
+                    //cria objeto
+
+                    m = obj->readPln(dimZ,pln);
+                    emit atualizagrade(m);
+                break;
+                case YZ:
+                    //cria objeto
+
+                    m = obj->readPln(dimX,pln);
+                    emit atualizagrade(m);
+                break;
+                case ZX:
+                    //cria objeto
+
+                    m = obj->readPln(dimY,pln);
+                    emit atualizagrade(m);
+                break;
+            }
+        break;
+    }
+
+    //setColor(r,g,b,a); atribui os valores dos sliders das cores às variaveis r, g, b e a --- r = ui->Red->value()/255;
+
+    //figura geometrica terá um objeto criando objetos de escultor
+    //vários switchs
+
+    //emit atualizagrade(m);
+}
+
+void MainWindow::MudalayerX(int valor)
+{
+    dimX = (int) (m[0].size()-1)*valor/100;
+    ui->lcdX->display(dimX);
+    if(pln == YZ){
+        m = obj->readPln(dimX,pln);
+        emit atualizagrade(m);
+    }
+}
+
+void MainWindow::MudalayerY(int valor)
+{
+    dimY = (int) (m[0].size()-1)*valor/100;
+    ui->lcdY->display(dimY);
+    if(pln == ZX){
+        m = obj->readPln(dimY,pln);
+        emit atualizagrade(m);
+    }
+}
+
+void MainWindow::MudalayerZ(int valor)
+{
+    dimZ = (int) (m[0].size()-1)*valor/100;
+    ui->lcdZ->display(dimZ);
+    if(pln == XY){
+        m = obj->readPln(dimZ,pln);
+        emit atualizagrade(m);
+    }
+}
+
+void MainWindow::on_left_clicked()
+{
+    //Procurar o novo plano escolhido e atribuir isso ao pln
+    //Mudar a matriz m para o novo plano na dimensão do referido plano /dimX, dimY ou dimZ
+    switch(pln){
+        case XY:
+            pln = YZ;
+            ui->label_19->setText("YZ");
+            m = obj->readPln(dimX,pln);
+        break;
+        case YZ:
+            pln = XY;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimZ,pln);
+        break;
+        case ZX:
+            pln = YZ;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimX,pln);
+        break;
+        ;
+    }
+
+    //Mandar a nova matriz m para o Draw
+    emit atualizagrade(m);
+}
+
+void MainWindow::on_right_clicked()
+{
+    //Procurar o novo plano escolhido e atribuir isso ao pln
+    //Mudar a matriz m para o novo plano na dimensão do referido plano /dimX, dimY ou dimZ
+    switch(pln){
+        case XY:
+            pln = YZ;
+            ui->label_19->setText("YZ");
+            m = obj->readPln(dimX,pln);
+        break;
+        case YZ:
+            pln = XY;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimZ,pln);
+        break;
+        case ZX:
+            pln = YZ;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimX,pln);
+        break;
+        ;
+    }
+
+    //Mandar a nova matriz m para o Draw
+    emit atualizagrade(m);
+}
+
+void MainWindow::on_down_clicked()
+{
+    //Procurar o novo plano escolhido e atribuir isso ao pln
+    //Mudar a matriz m para o novo plano na dimensão do referido plano /dimX, dimY ou dimZ
+    switch(pln){
+        case XY:
+            pln = ZX;
+            ui->label_19->setText("ZX");
+            m = obj->readPln(dimY,pln);
+        break;
+        case YZ:
+            pln = ZX;
+            ui->label_19->setText("ZX");
+            m = obj->readPln(dimY,pln);
+        break;
+        case ZX:
+            pln = XY;
+            ui->label_19->setText("XY");
+            m = obj->readPln(dimZ,pln);
+        break;
+        ;
+    }
+
+    //Mandar a nova matriz m para o Draw
+    emit atualizagrade(m);
 }

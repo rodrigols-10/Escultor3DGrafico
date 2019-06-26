@@ -24,10 +24,11 @@ public:
 signals:
   void clickX(int);
   void clickY(int);
-  void posicaoGrade(int[]);
+  void posicaoGrade(std::vector<int> p);
 
 public slots:
   void mudarGrade(std::vector<std::vector<Voxel>> m);
+  void gradeAtualizada(std::vector<std::vector<Voxel>> m);
 };
 
 #endif // DRAW_H

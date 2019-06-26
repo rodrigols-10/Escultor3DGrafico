@@ -18,7 +18,8 @@ private:
     int dimY = 0;
     int dimZ = 0;
     int pln = XY;
-    int Objeto;
+    int Objeto = 0;
+    float r,g,b,a; //cores capturadas dos QSliders
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -26,26 +27,16 @@ public:
 
 signals:
     void tamanhograde(std::vector<std::vector<Voxel>> mm);
-public slots:
-    /* Tava dando erro, já que não tinha nada além disso
-    void changeXY();
-    void changeYZ();
-    void changeZX();
-    void putVoxel();
-    void cutVoxel();
-    void putBox();
-    void cutBox();
-    void putSphere();
-    void cutSphere();
-    void putEllipsoide();
-    void cutEllipsoide();
-    void selectPlane();
-*/
+    void atualizagrade(std::vector<std::vector<Voxel>> mm);
 
 private slots:
     void on_botaoIr_clicked();
 
-    void on_up_clicked();
+    void criarObjeto(std::vector<int> p);
+
+    void MudalayerX(int);
+    void MudalayerY(int);
+    void MudalayerZ(int);
 
     void on_putVoxelButton_clicked();
 
@@ -63,7 +54,14 @@ private slots:
 
     void on_cutEllipsoidButton_clicked();
 
-    void criarObjeto(int p[]);
+    void on_up_clicked();
+
+    void on_left_clicked();
+
+    void on_right_clicked();
+
+    void on_down_clicked();
+
 private:
     Ui::MainWindow *ui;
 
