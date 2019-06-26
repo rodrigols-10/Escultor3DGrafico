@@ -1,8 +1,8 @@
 <h1>Escultor Painter 3D</h1>
 
 Projeto que consiste no desenho de figuras geométricas em pequenos quadrados, conhecidos como Voxels. Conforme a imagem a seguir, para definir o plano 2D desejado utilizasse as setas no painel do lado esquerdo e desse mesmo lado o usuário poderá definir o tamanho da grade, as outras funções ficam do lado direito do painel, elas permitem o usuário criar diversas figuras, colorir conforme deseja, além de recortar, sendo assim usando a criatividade para criar formas como preferir.
-<p align="center">
- 
+
+<p align="center"> 
 <img src="https://user-images.githubusercontent.com/48896758/60150988-4be7d180-97b1-11e9-93ab-33a62b015ad9.jpg" width="500px;" style="max-width:100%;">
  </p>
 
@@ -18,6 +18,12 @@ Para se familizar ainda mais com os recursos que o programa tem a oferecer, exis
    <li><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CutSphere</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : Essa funcionalidade apaga uma esfera, no tamanho que foi definido pelo usuário.</font></font></li>
    <li><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CutEllipsoid</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : Essa funcionalidade apaga um elipsóide, no tamanho que foi definido pelo usuário</font></font></li>
  </ul>
+ 
+ Conforme a imagem abaixo:
+ 
+ <p align="center"> 
+<img src="https://user-images.githubusercontent.com/48896758/60150988-4be7d180-97b1-11e9-93ab-33a62b015ad9.jpg" width="500px;" style="max-width:100%;">
+ </p>
  
  Além da visualização dos planos em 2D, o programa também é capaz de mostrar a projeção do desenho em 3D, para isso o desenho foi exportado em dois tipos diferentes de arquivos, .OFF ou .VECT, por intermédio dos softwares: Meshlab (no Windows) ou GeomView (no Linux).
  
