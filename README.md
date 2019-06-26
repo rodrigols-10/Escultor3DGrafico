@@ -25,6 +25,8 @@ Para se familizar ainda mais com os recursos que o programa tem a oferecer, exis
 <img src="https://user-images.githubusercontent.com/48896758/60151342-cbc26b80-97b2-11e9-85e5-f1f25dbfdd1b.jpg" width="500px;" style="max-width:100%;">
  </p>
  
+ Os controles para as cores e opacidade das figuras geométricas estão no painel do lado direito, sendo representada por essas barras deslizantes, tendo em vista uma variedade maior de cores e uma facilitação no seu uso
+ 
  Além da visualização dos planos em 2D, o programa também é capaz de mostrar a projeção do desenho em 3D, para isso o desenho foi exportado em dois tipos diferentes de arquivos, .OFF ou .VECT, por intermédio dos softwares: Meshlab (no Windows) ou GeomView (no Linux).
  
 <h1>Desenvolvedores:</h1>
