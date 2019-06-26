@@ -1,8 +1,9 @@
 <h1>Escultor Painter 3D</h1>
 
 Projeto que consiste no desenho de figuras geométricas em pequenos quadrados, conhecidos como Voxels. Conforme a imagem a seguir, para definir o plano 2D desejado, utilizasse as setas no painel do lado esquerdo, as outras funções ficam do lado direito do painel, elas permitem o usuário criar diversas figuras, colorir conforme deseja, além de recortar, sendo assim usando a criatividade para criar formas como preferir.
-
-<img src="https://user-images.githubusercontent.com/48896758/60150771-6f5e4c80-97b0-11e9-9a61-6e11b9a829b5.jpg" width="500px;" style="max-width:100%;">
+<center>
+<img src="https://user-images.githubusercontent.com/48896758/60150988-4be7d180-97b1-11e9-93ab-33a62b015ad9.jpg" width="500px;" style="max-width:100%;">
+ </center>
 
 Para se familizar ainda mais com os recursos que o programa tem a oferecer, existem algumas funções que o programa pode executar, dentre elas, estão:
 
