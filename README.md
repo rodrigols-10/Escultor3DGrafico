@@ -2,7 +2,7 @@
 
 Projeto que consiste no desenho de figuras geométricas em pequenos quadrados, conhecidos como Voxels. Conforme a imagem a seguir, para definir o plano 2D desejado, utilizasse as setas no painel do lado esquerdo, as outras funções ficam do lado direito do painel, elas permitem o usuário criar diversas figuras, colorir conforme deseja, além de recortar, sendo assim usando a criatividade para criar formas como preferir.
 
-<img src="blob:https://web.whatsapp.com/c14d4613-4b5d-496d-874d-7551a0119527" width="500px;" style="max-width:100%;">
+<img src="" width="500px;" style="max-width:100%;">
 
 Para se familizar ainda mais com os recursos que o programa tem a oferecer, existem algumas funções que o programa pode executar, dentre elas, estão:
 
