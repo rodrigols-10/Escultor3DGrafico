@@ -22,7 +22,7 @@ Para se familizar ainda mais com os recursos que o programa tem a oferecer, exis
  Conforme a imagem abaixo:
  
  <p align="center"> 
-<img src="(https://user-images.githubusercontent.com/48896758/60151440-265bc780-97b3-11e9-8635-1c6dde23514d.jpg" width="500px;" style="max-width:100%;">
+<img src="((https://user-images.githubusercontent.com/48896758/60151342-cbc26b80-97b2-11e9-85e5-f1f25dbfdd1b.jpg" width="500px;" style="max-width:100%;">
  </p>
  
  Além da visualização dos planos em 2D, o programa também é capaz de mostrar a projeção do desenho em 3D, para isso o desenho foi exportado em dois tipos diferentes de arquivos, .OFF ou .VECT, por intermédio dos softwares: Meshlab (no Windows) ou GeomView (no Linux).
